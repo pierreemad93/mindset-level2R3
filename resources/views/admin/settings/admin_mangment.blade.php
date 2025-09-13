@@ -25,6 +25,10 @@
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
+                        <div class="mb-3">
+                            <button type="button"  id="select-all">Select All</button>
+                            <button type="button"  id="unselect-all">Unselect All</button>
+                        </div>
                         <div class="list-group my-3">
                             @foreach ($permissions as $group => $permissions)
                                 <div id="accordionIcon" class="accordion mt-3 accordion-without-arrow">
@@ -68,5 +72,14 @@
                 </div>
 
             </div>
+        <script>
+            document.getElementById('select-all').addEventListener('click', function () {
+                document.querySelectorAll('input[name="permissions[]"]').forEach(cb => cb.checked = true);
+            });
+
+            document.getElementById('unselect-all').addEventListener('click', function () {
+                document.querySelectorAll('input[name="permissions[]"]').forEach(cb => cb.checked = false);
+            });
+        </script>
     </x-slot>
 </x-admin-layout>
