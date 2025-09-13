@@ -25,6 +25,16 @@
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
+                        <div class="list-group my-3 d-flex gap-2">
+                            <button type="button" id="btnSelectAll" onclick="selectAllCheckboxes()" class="btn btn-sm btn-outline-primary">
+                                Select All
+                            </button>
+                            <button type="button" id="btnUnselectAll" onclick="unselectAllCheckboxes()" class="btn btn-sm btn-outline-secondary">
+                                Unselect All
+                            </button>
+                        </div>
+
+                        
                         <div class="list-group my-3">
                             @foreach ($permissions as $group => $permissions)
                                 <div id="accordionIcon" class="accordion mt-3 accordion-without-arrow">
