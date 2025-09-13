@@ -137,6 +137,22 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<script>
+/* Use names that won't collide with element IDs */
+function selectAllCheckboxes(selector = '.form-check-input') {
+  document.querySelectorAll(selector).forEach(cb => {
+    if (cb.type === 'checkbox') cb.checked = true;
+  });
+}
+
+function unselectAllCheckboxes(selector = '.form-check-input') {
+  document.querySelectorAll(selector).forEach(cb => {
+    if (cb.type === 'checkbox') cb.checked = false;
+  });
+}
+</script>
+
 </body>
 
 </html>
