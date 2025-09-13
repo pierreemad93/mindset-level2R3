@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
 {
@@ -14,6 +15,9 @@ class UserController extends Controller
     {
         //Eloquent ORM 
         //return collection
+        if (!Gate::allows('users-view')) {
+            abort(403);
+        }
         $users = User::get();
         return view('admin.users.all', ['users' => $users]);
     }
