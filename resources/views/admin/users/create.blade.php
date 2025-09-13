@@ -44,7 +44,12 @@
                                 name="password_confirmation">
                             <label for="password_confirmation">Confirm Password</label>
                         </div>
-
+                        <select name="role" id="largeSelect" class="form-select form-select-lg mb-3">
+                            <option value="">Select role</option>
+                            @foreach ($roles as $role)
+                                <option value="{{ $role->name }}">{{ $role->name }}</option>
+                            @endforeach
+                        </select>
                         <button type="submit" class="btn btn-primary me-2">Save</button>
                     </form>
                 </div>

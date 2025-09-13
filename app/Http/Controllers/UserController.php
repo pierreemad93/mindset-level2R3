@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -20,11 +21,18 @@ class UserController extends Controller
     public function create()
     {
 
-        return view('admin.users.create');
+        $roles = Role::all();
+        return view('admin.users.create', ['roles' => $roles]);
     }
     public function store(UserRequest $request)
     {
-        User::create($request->validated());
+        $data = $request->validated();
+        $user = User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => $data['password'],
+        ]);
+        $user->assignRole($data['role']);
         return to_route('users.index');
     }
     public function show($id)

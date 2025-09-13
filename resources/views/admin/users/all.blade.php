@@ -22,13 +22,14 @@
                         </thead>
                         <tbody>
                             @forelse ($users as $index => $user)
+                           
                                 <tr>
                                     <td>{{ $index + 1 }}</td>
                                     <td><strong>{{ $user->name }}</strong></td>
                                     <td>{{ $user->email }}</td>
                                     <td>
                                         <span class="badge bg-info text-dark">
-                                            {{ $user->role ?? 'N/A' }}
+                                            {{ $user->roles->pluck('name') ?? 'N/A' }}
                                         </span>
                                     </td>
                                     <td class="text-center">
