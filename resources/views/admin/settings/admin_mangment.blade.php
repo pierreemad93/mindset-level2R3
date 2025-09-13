@@ -25,6 +25,11 @@
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
+
+                        <div class="d-flex justify-content-end gap-2 my-3">
+                            <button type="button" id="selectAllBtn" class="btn btn-primary">Select All</button>
+                            <button type="button" id="deselectAllBtn" class="btn btn-secondary">Deselect All</button>
+                        </div>
                         <div class="list-group my-3">
                             @foreach ($permissions as $group => $permissions)
                                 <div id="accordionIcon" class="accordion mt-3 accordion-without-arrow">
@@ -69,4 +74,29 @@
 
             </div>
     </x-slot>
-</x-admin-layout>
+
+    <script>
+        // Find the buttons by their ID
+        const selectAllButton = document.getElementById('selectAllBtn');
+        const deselectAllButton = document.getElementById('deselectAllBtn');
+
+        // Find all the permission checkboxes by their 'name' attribute
+        const permissionCheckboxes = document.querySelectorAll('input[name="permissions[]"]');
+
+        // Add a 'click' event listener to the "Select All" button
+        selectAllButton.addEventListener('click', () => {
+            // Loop through all checkboxes and set them to 'checked'
+            permissionCheckboxes.forEach(checkbox => {
+                checkbox.checked = true;
+            });
+        });
+
+        // Add a 'click' event listener to the "Deselect All" button
+        deselectAllButton.addEventListener('click', () => {
+            // Loop through all checkboxes and uncheck them
+            permissionCheckboxes.forEach(checkbox => {
+                checkbox.checked = false;
+            });
+        });
+    </script>
+    </x-admin-layout>
