@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
@@ -23,7 +24,8 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::get('post/create', [PostController::class, 'create']);
+Route::get('post/create', [PostController::class, 'create'])->middleware('auth');
+Route::get('comment/create', [CommentController::class, 'create'])->middleware('auth');
 Route::resource('users', UserController::class);
 
 Route::get('roles', [RoleController::class, 'create'])->name('roles.create');

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     //
-    protected $guarded = 'id';
+    protected $fillable = ['title', 'description', 'user_id'];
     public function media()
     {
         return $this->MorphMany(Media::class, 'mediable');

@@ -19,7 +19,7 @@ class PostController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
         //
         $post = Post::create([
@@ -30,7 +30,7 @@ class PostController extends Controller
         ]);
         $post->media()->create([
             'file_path' => 'uplaoads/posts',
-            'file_type' => "image"
+            'type_path' => "image"
         ]);
         dd("done");
     }

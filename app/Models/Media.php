@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Media extends Model
 {
     //
-    protected $guarded = 'id';
-    
+    protected $fillable = ['file_path', 'type_path', 'post_id'];
+
     public function mediable()
     {
         return $this->morphTo();

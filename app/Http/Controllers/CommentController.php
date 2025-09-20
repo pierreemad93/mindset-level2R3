@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
@@ -21,6 +22,17 @@ class CommentController extends Controller
     public function create()
     {
         //
+        $comment = Comment::create([
+            'title' => 'comment1',
+            'description' => 'dummy text data ',
+            'post_id' => 4,
+
+        ]);
+        $comment->media()->create([
+            'file_path' => 'uplaoads/comments',
+            'type_path' => "image"
+        ]);
+        dd("done");
     }
 
     /**
