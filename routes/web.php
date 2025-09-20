@@ -2,10 +2,11 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\RoleController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,9 +22,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__ . '/auth.php';
 
+Route::get('post/create', [PostController::class, 'create']);
 Route::resource('users', UserController::class);
 
 Route::get('roles', [RoleController::class, 'create'])->name('roles.create');
 Route::post('roles', [RoleController::class, 'store'])->name('roles.store');
+require __DIR__ . '/auth.php';
