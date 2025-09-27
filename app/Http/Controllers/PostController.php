@@ -14,8 +14,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
-        $posts = Post::get();
+        //Eager loading
+        // $posts= Post::get();
+        $posts = Post::with(['user' => function ($q) {
+            return  $q->select('id', 'name');
+        }, 'comments'])->get();
         return view('admin.blogs.all', ['posts' => $posts]);
     }
 
