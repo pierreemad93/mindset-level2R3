@@ -14,6 +14,13 @@ class PostController extends Controller
      */
     public function index()
     {
+
+        // Data Serialization   
+        // $posts = Post::with('user' , 'comments')->get();
+        // dd($posts->toArray());
+        // dd($user->attributesToArray());  
+        // dd($posts->toJson());
+
         //Eager loading
         // $posts= Post::get();
         $posts = Post::with(['user' => function ($q) {
