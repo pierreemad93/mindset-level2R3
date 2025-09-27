@@ -22,6 +22,11 @@
                                     <p class="card-text">{{ $post->description }}</p>
                                     <p class="card-text">
                                         <small class="text-muted">
+                                            Added by : {{ $post->user->name }}
+                                        </small>
+                                    </p>
+                                    <p class="card-text">
+                                        <small class="text-muted">
                                             Last updated at {{ $post->created_at->diffForHumans() }}
                                         </small>
                                     </p>
