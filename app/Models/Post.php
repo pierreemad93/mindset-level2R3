@@ -12,4 +12,8 @@ class Post extends Model
     {
         return $this->MorphMany(Media::class, 'mediable');
     }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

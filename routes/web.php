@@ -24,9 +24,9 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::get('post/create', [PostController::class, 'create'])->middleware('auth');
-Route::get('comment/create', [CommentController::class, 'create'])->middleware('auth');
 Route::resource('users', UserController::class);
+Route::resource('posts', PostController::class);
+Route::resource('comments', CommentController::class);
 
 Route::get('roles', [RoleController::class, 'create'])->name('roles.create');
 Route::post('roles', [RoleController::class, 'store'])->name('roles.store');

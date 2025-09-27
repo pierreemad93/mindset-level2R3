@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,34 +15,30 @@ class PostController extends Controller
     public function index()
     {
         //
+        $posts = Post::all();
+        return view('admin.blogs.all', ['posts' => $posts]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Request $request)
+    public function create()
     {
         //
-        $post = Post::create([
-            'title' => 'post2',
-            'description' => 'dummy text data ',
-            'user_id' => Auth::user()->id,
-
-        ]);
-        $post->media()->create([
-            'file_path' => 'uplaoads/posts',
-            'type_path' => "image"
-        ]);
-        dd("done");
+        return view("admin.blogs.create");
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
         //
+        $data = $request->validated();
+        $data['user_id'] = Auth::user()->id;
+        Post::create($data);
 
+        return redirect()->route('posts.index')->with('success', 'Post created successfully!');
     }
 
     /**
@@ -50,6 +47,8 @@ class PostController extends Controller
     public function show(Post $post)
     {
         //
+        $post->load('media');
+        dd($post);
     }
 
     /**

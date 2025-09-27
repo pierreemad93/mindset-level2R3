@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\CommentRequest;
 
 class CommentController extends Controller
 {
@@ -22,27 +23,18 @@ class CommentController extends Controller
     public function create()
     {
         //
-        $comment = Comment::create([
-            'title' => 'comment1',
-            'description' => 'dummy text data ',
-            'post_id' => 4,
 
-        ]);
-        $comment->media()->create([
-            'file_path' => 'uplaoads/comments',
-            'type_path' => "image"
-        ]);
-        dd("done");
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CommentRequest $request)
     {
-        //
-    }
+        Comment::create($request->validated());
 
+        return back()->with('success', 'Comment added successfully!');
+    }
     /**
      * Display the specified resource.
      */
