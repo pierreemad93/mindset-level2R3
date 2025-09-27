@@ -41,7 +41,7 @@
                                                     {{ $comment->description }}
                                                     <br>
                                                     <small
-                                                        class="text-muted">{{ $comment->created_at->diffForHumans() }}</small>
+                                                        class="text-muted">{{ $comment->created_at }}</small>
                                                 </li>
                                             @empty
                                                 <li class="list-group-item text-muted">No comments yet.</li>

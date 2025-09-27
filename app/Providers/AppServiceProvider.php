@@ -32,6 +32,6 @@ class AppServiceProvider extends ServiceProvider
         //     $user->hasRole('users');
         // });
 
-        Model::preventLazyLoading();
+        // Model::preventLazyLoading();
     }
 }

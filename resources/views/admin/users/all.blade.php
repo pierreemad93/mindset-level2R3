@@ -17,12 +17,12 @@
                                 <th scope="col">Name</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Role</th>
+                                <th scope="col">created at</th>
                                 <th scope="col" class="text-center">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse ($users as $index => $user)
-                           
                                 <tr>
                                     <td>{{ $index + 1 }}</td>
                                     <td><strong>{{ $user->name }}</strong></td>
@@ -32,14 +32,18 @@
                                             {{ $user->roles->pluck('name') ?? 'N/A' }}
                                         </span>
                                     </td>
+                                    <td>
+                                        <span class="badge bg-info text-dark">
+                                            {{ $user->created_at }}
+                                        </span>
+                                    </td>
                                     <td class="text-center">
-                                        <a href="{{ route('users.edit', $user->id) }}" 
-                                           class="btn btn-sm btn-warning me-1">
+                                        <a href="{{ route('users.edit', $user->id) }}"
+                                            class="btn btn-sm btn-warning me-1">
                                             <i class="bx bx-edit-alt"></i> Edit
                                         </a>
-                                        <form action="{{ route('users.destroy', $user->id) }}" 
-                                              method="POST" 
-                                              class="d-inline">
+                                        <form action="{{ route('users.destroy', $user->id) }}" method="POST"
+                                            class="d-inline">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-danger"

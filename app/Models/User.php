@@ -3,9 +3,13 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Casts\CreatedAtCast;
 use App\Models\Post;
+use Carbon\Carbon;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -45,6 +49,7 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'created_at' => CreatedAtCast::class,
         ];
     }
     public function posts()
@@ -55,4 +60,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Comment::class);
     }
+    // protected function createdAt(): Attribute
+    // {
+    //     return Attribute::make(
+    //         get: fn($value) => Carbon::parse($value)->diffForHumans(),
+    //     );
+    // }
 }
