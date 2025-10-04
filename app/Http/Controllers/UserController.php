@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
+use App\Http\Services\UserService;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Gate;
 
@@ -13,14 +14,7 @@ class UserController extends Controller
     //
     public function index()
     {
-        //Eloquent ORM 
-        //return collection
-        if (!Gate::allows('users-view')) {
-            abort(403);
-        }
-        // $users = User::select('id', 'name', 'email')->with('roles')->get();
-        $users = User::select('id', 'name', 'email')->with('roles')->simplePaginate(5);
-        // dd($users);
+        $users = UserService::index();
         return view('admin.users.all', ['users' => $users]);
     }
 
