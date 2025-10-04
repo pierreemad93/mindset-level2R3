@@ -18,14 +18,18 @@ class UserController extends Controller
         if (!Gate::allows('users-view')) {
             abort(403);
         }
-        $users = User::get();
+        // $users = User::select('id', 'name', 'email')->with('roles')->get();
+        $users = User::select('id', 'name', 'email')->with('roles')->simplePaginate(5);
+        // dd($users);
         return view('admin.users.all', ['users' => $users]);
     }
 
     public function create()
     {
 
-        $roles = Role::all();
+        $roles = Role::select('id',  'name')->get();
+        // $roles = Role::pluck('name', 'id')->toArray();
+        // dd($roles);
         return view('admin.users.create', ['roles' => $roles]);
     }
     public function store(UserRequest $request)

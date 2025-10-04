@@ -76,12 +76,10 @@
                             class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
                             <div class="mb-2 mb-md-0">
                                 ©
-                                <script>
-                                    document.write(new Date().getFullYear());
-                                </script>
-                                , made with ❤️ by
-                                <a href="https://themeselection.com" target="_blank"
-                                    class="footer-link fw-bolder">ThemeSelection</a>
+                                <span>
+                                    {{ $footer['made_at'] }}
+                                </span>, made with ❤️ by<a href="https://themeselection.com" target="_blank"
+                                    class="footer-link fw-bolder">{{ $footer['made_by'] }}</a>
                             </div>
                             <div>
                                 <a href="https://themeselection.com/license/" class="footer-link me-4"
@@ -138,20 +136,20 @@
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 
-<script>
-/* Use names that won't collide with element IDs */
-function selectAllCheckboxes(selector = '.form-check-input') {
-  document.querySelectorAll(selector).forEach(cb => {
-    if (cb.type === 'checkbox') cb.checked = true;
-  });
-}
+    <script>
+        /* Use names that won't collide with element IDs */
+        function selectAllCheckboxes(selector = '.form-check-input') {
+            document.querySelectorAll(selector).forEach(cb => {
+                if (cb.type === 'checkbox') cb.checked = true;
+            });
+        }
 
-function unselectAllCheckboxes(selector = '.form-check-input') {
-  document.querySelectorAll(selector).forEach(cb => {
-    if (cb.type === 'checkbox') cb.checked = false;
-  });
-}
-</script>
+        function unselectAllCheckboxes(selector = '.form-check-input') {
+            document.querySelectorAll(selector).forEach(cb => {
+                if (cb.type === 'checkbox') cb.checked = false;
+            });
+        }
+    </script>
 
 </body>
 

@@ -49,6 +49,10 @@
                             @foreach ($roles as $role)
                                 <option value="{{ $role->name }}">{{ $role->name }}</option>
                             @endforeach
+                            {{-- @dump($roles) --}}
+                            {{-- @foreach ($roles as $role)
+                                <option value="{{ $role['name'] }}">{{ $role['name'] }}</option>
+                            @endforeach --}}
                         </select>
                         <button type="submit" class="btn btn-primary me-2">Save</button>
                     </form>
