@@ -15,4 +15,5 @@ class UserService
         $users = User::select('id', 'name', 'email')->with('roles')->simplePaginate(5);
         return $users;
     }
+    
 }
