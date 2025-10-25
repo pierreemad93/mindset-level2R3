@@ -8,7 +8,14 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
+use App\Jobs\WriteLogJob;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+
+
+Route::get('/test-job', function () {
+    WriteLogJob::dispatch('hello mindest');
+    return 'Job dipatched';
+});
 
 Route::get('/', function () {
     return view('welcome');

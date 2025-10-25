@@ -8,6 +8,7 @@ use App\Http\Requests\UserRequest;
 use App\Http\Services\UserService;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Gate;
+use App\Notifications\NewUserNotification;
 
 class UserController extends Controller
 {

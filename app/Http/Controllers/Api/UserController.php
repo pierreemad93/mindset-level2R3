@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
 use App\Http\Requests\Api\UserRequest;
+use App\Notifications\NewUserNotification;
 
 class UserController extends Controller
 {
@@ -29,6 +30,8 @@ class UserController extends Controller
         //
 
         $user = User::create($request->validated());
+        $user->notify(new NewUserNotification($user->name));
+
         return response()->json([
             'data' => new UserResource($user),
             'status' => 201,
