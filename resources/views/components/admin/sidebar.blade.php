@@ -57,8 +57,8 @@
 
       <ul class="menu-inner py-1">
           <!-- Dashboard -->
-
-          <x-admin.sidebar-list link="dashboard" listName="Dashboard" :active="request()->routeIs('dashboard')" />
+       
+          <x-admin.sidebar-list link="dashboard" listName="{{ __('admin.dashboard') }}" :active="request()->routeIs('dashboard')" />
 
 
           <!-- Layouts -->

@@ -25,6 +25,16 @@
                                     data-icon="octicon-star" data-size="large" data-show-count="true"
                                     aria-label="Star themeselection/sneat-html-admin-template-free on GitHub">Star</a>
                             </li>
+                            <li class="nav-item lh-1 me-3">
+                                @if (LaravelLocalization::getCurrentLocale() == 'ar')
+                                    <a class=""
+                                        href="{{ LaravelLocalization::getLocalizedURL('en') }}">English</a>
+                                @else
+                                    <a class=""
+                                        href="{{ LaravelLocalization::getLocalizedURL('ar') }}">العربيه</a>
+                                @endif
+
+                            </li>
 
                             <!-- User -->
                             <li class="nav-item navbar-dropdown dropdown-user dropdown">
